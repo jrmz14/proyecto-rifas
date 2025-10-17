@@ -1,0 +1,384 @@
+/* rifa_app/static/css/estilos.css */
+
+/* ======================================================= */
+/* === 1. GENERAL & BASE (Sticky Footer FIX) === */
+/* ======================================================= */
+html, body {
+    height: 100%; /* FIX CLAVE: Asegura que el contenedor ocupe toda la ventana */
+}
+
+body {
+    font-family: Arial, sans-serif;
+    background-color: #f8f8f8;
+    color: #333;
+    
+    /* FIX CLAVE: Habilitar Flexbox en columna para empujar el footer */
+    display: flex;
+    flex-direction: column; 
+    margin: 0; /* Asegurar que no haya márgenes por defecto */
+}
+
+/* Contenido principal (debe envolver todo entre Navbar y Footer en base.html) */
+#main-content {
+    flex-grow: 1; /* Esto lo fuerza a expandirse y empujar el footer */
+}
+
+.rifa-container {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 0 20px;
+}
+
+/* ======================================================= */
+/* === 2. BARRA DE NAVEGACIÓN (HEADER) === */
+/* ======================================================= */
+.main-navbar {
+    background-color: #ffffff;
+    box-shadow: 0 1px 5px rgba(0, 0, 0, 0.1);
+    border-bottom: 3px solid #3498db; 
+}
+.navbar-container {
+    max-width: 1200px;
+    margin: 0 auto;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 10px 20px;
+}
+.app-logo { max-height: 40px; width: auto; flex-shrink: 0; }
+.nav-links { display: flex; gap: 20px; align-items: center; }
+.nav-links a { 
+    text-decoration: none; 
+    color: #333; 
+    padding: 10px 0; 
+    font-size: 0.9em; 
+    font-weight: 600; 
+    transition: color 0.2s; 
+}
+.nav-links a:hover { color: #3498db; }
+.btn-nav-action { 
+    background-color: #2980b9; 
+    color: white !important; 
+    padding: 10px 20px; 
+    border-radius: 4px; 
+    margin-left: 10px; 
+    font-size: 0.9em; 
+    font-weight: 700; 
+    text-transform: uppercase; 
+}
+.btn-nav-action:hover { background-color: #3498db; }
+
+
+/* ======================================================= */
+/* === 3. HERO SECTION (Página de Inicio) === */
+/* ======================================================= */
+.hero-section {
+    display: flex; 
+    justify-content: space-between;
+    align-items: center; 
+    padding: 60px 0; 
+    background-color: #ffffff; 
+    margin-top: 30px; 
+    border-radius: 12px;
+    box-shadow: 0 0 20px rgba(0, 0, 0, 0.05); 
+}
+.hero-left, .hero-right { flex: 1; }
+.hero-left { padding-right: 40px; text-align: center; }
+.hero-right { padding-left: 40px; text-align: left; }
+
+.hero-product-image {
+    max-width: 80%; 
+    height: auto;
+    border-radius: 10px;
+    box-shadow: 0 8px 15px rgba(0, 0, 0, 0.1); 
+}
+.location {
+    font-size: 1.1em; color: #3498db; font-weight: 600; display: block; margin-bottom: 10px;
+    text-transform: uppercase;
+}
+.hero-title {
+    font-family: 'Arial Black', sans-serif; font-size: 3.5em; color: #2c3e50; 
+    margin-bottom: 15px; line-height: 1.1; font-weight: 900; text-transform: uppercase;
+}
+.hero-subtitle { font-size: 1.2em; color: #666; margin-bottom: 30px; }
+.btn-hero-action {
+    background-color: #2980b9; color: white; padding: 15px 30px; border-radius: 8px;
+    font-weight: bold; display: inline-block; transition: background-color 0.2s;
+    text-transform: uppercase; font-size: 1.1em;
+}
+.btn-hero-action:hover { background-color: #3498db; }
+
+
+/* ======================================================= */
+/* === 4. SECCIONES DE EVENTOS Y TÍTULOS === */
+/* ======================================================= */
+.title-section {
+    text-align: center;
+    padding: 50px 0 20px; 
+}
+.subtitle {
+    font-weight: 600; color: #666; margin-bottom: 5px;
+}
+.main-heading {
+    font-family: 'Arial Black', sans-serif; font-size: 2.8em; color: #2c3e50;
+    font-weight: 900; text-transform: uppercase;
+}
+
+/* Evento Activo (Index) */
+.events-list {
+    display: flex; justify-content: center; align-items: flex-start;
+    padding: 30px 0 60px;
+}
+.event-card {
+    width: 350px; background-color: #ffffff; border-radius: 10px;
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1); overflow: hidden;
+    text-align: center; transition: transform 0.3s ease-in-out;
+}
+.event-card:hover { transform: translateY(-5px); box-shadow: 0 10px 20px rgba(0, 0, 0, 0.15); }
+.card-image-container { height: 300px; overflow: hidden; }
+.card-image { width: 100%; height: 100%; object-fit: cover; }
+.card-content { padding: 20px; }
+.event-title { font-size: 1.5em; color: #2c3e50; margin-bottom: 5px; font-weight: 700; }
+.event-date { font-size: 0.9em; color: #666; margin-bottom: 15px; }
+
+/* Botón de Evento */
+.btn-event-action {
+    background-color: #2980b9; color: white; padding: 12px 25px; border-radius: 6px;
+    font-weight: bold; display: inline-block; transition: background-color 0.2s;
+    text-transform: uppercase; font-size: 1em;
+}
+.btn-event-action:hover { background-color: #3498db; }
+
+/* Eventos Pasados (Carrusel/Slick) */
+.finished-title { margin-top: 50px; }
+.finished-events-carousel {
+    max-width: 1100px; margin: 0 auto; padding: 20px 0 60px;
+}
+.finished-events-carousel .event-card {
+    margin: 0 10px; background-color: #f1f1f1; 
+}
+.btn-finished-action {
+    background-color: #6c757d; color: white; padding: 12px 25px; border-radius: 6px;
+    font-weight: bold; display: inline-block; transition: background-color 0.2s;
+    text-transform: uppercase; font-size: 1em;
+}
+.btn-finished-action:hover { background-color: #5a6268; }
+.slick-prev:before, .slick-next:before { color: #2c3e50 !important; }
+
+
+/* ======================================================= */
+/* === 5. SECCIÓN LISTADO DE NÚMEROS (Controles y Grid) === */
+/* ======================================================= */
+
+/* Consolidamos los estilos de control-section */
+.control-section {
+    display: flex; justify-content: space-between; align-items: center;
+    margin: 30px 0; padding: 10px 0; border-bottom: 2px solid #ddd;
+}
+.control-left { flex-grow: 1; padding-right: 20px; }
+.control-right { display: flex; align-items: center; gap: 20px; flex-shrink: 0; }
+
+#buscador-input, .form-input { /* Aplicamos el mismo estilo al input del buscador y a los otros */
+    width: 100%; padding: 12px 15px; border: 1px solid #ccc;
+    border-radius: 8px; font-size: 1.1em; box-sizing: border-box;
+}
+
+.seleccionados-count {
+    font-size: 1.1em; font-weight: 600; color: #2c3e50;
+}
+
+/* Botón Primario (Reservar/Pagar) */
+.btn-primary {
+    background-color: #2ecc71; color: white; padding: 12px 25px; border: none;
+    border-radius: 6px; font-weight: bold; cursor: pointer;
+    transition: background-color 0.2s; text-transform: uppercase;
+}
+.btn-primary:hover { background-color: #27ae60; }
+.btn-primary:disabled { background-color: #ccc; cursor: not-allowed; }
+
+/* CUADRÍCULA Y NÚMEROS */
+.grid-numeros {
+    display: grid; gap: 8px; padding-bottom: 50px;
+    grid-template-columns: repeat(auto-fit, minmax(60px, 1fr));
+}
+.numero {
+    text-align: center; padding: 10px 0; border-radius: 4px; font-weight: 700;
+    cursor: pointer; transition: all 0.2s; user-select: none;
+}
+.disponible { background-color: #ecf0f1; color: #333; border: 1px solid #ddd; }
+.reservado { 
+    background-color: #f1c40f; color: #fff; cursor: not-allowed; 
+    border: 1px solid #f39c12; opacity: 0.8; 
+}
+.vendido { 
+    background-color: #c0392b; color: #fff; cursor: not-allowed; 
+    border: 1px solid #e74c3c; opacity: 0.6;
+}
+.disponible:hover {
+    background-color: #3498db; color: white; transform: translateY(-2px);
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+}
+.seleccionado {
+    background-color: #2980b9 !important; color: white !important; 
+    border: 2px solid #2c3e50 !important; transform: scale(1.05);
+}
+
+
+/* ======================================================= */
+/* === 6. ESTILOS DEL MODAL DE COMPRA === */
+/* ======================================================= */
+#modal-formulario {
+    display: none; position: fixed; z-index: 1000; left: 0; top: 0;
+    width: 100%; height: 100%; overflow: auto; 
+    background-color: rgba(0,0,0,0.7); 
+    backdrop-filter: blur(5px);
+}
+.modal-content {
+    background-color: #fefefe; margin: 5% auto; padding: 30px;
+    border: 1px solid #888; width: 90%; max-width: 600px;
+    border-radius: 10px; box-shadow: 0 5px 15px rgba(0, 0, 0, 0.3);
+    position: relative; animation-name: animatetop; animation-duration: 0.4s;
+}
+.close-button {
+    color: #aaa; float: right; font-size: 28px; font-weight: bold;
+    line-height: 1; transition: color 0.2s;
+}
+.close-button:hover, .close-button:focus {
+    color: #c0392b; text-decoration: none; cursor: pointer;
+}
+
+/* Modal Formulario */
+.modal-content h2 {
+    color: #2c3e50; margin-bottom: 20px; font-size: 1.8em;
+    border-bottom: 2px solid #eee; padding-bottom: 10px;
+}
+.modal-content p { color: #666; margin-bottom: 15px; }
+.modal-content strong { color: #333; font-weight: 700; }
+.modal-content label { display: block; margin-bottom: 5px; font-weight: 600; color: #333; }
+
+.modal-content input[type="text"],
+.modal-content input[type="number"],
+.modal-content input[type="email"],
+.modal-content select {
+    width: 100%; padding: 10px 15px; margin-bottom: 15px; border: 1px solid #ccc;
+    border-radius: 5px; box-sizing: border-box; font-size: 1em; transition: border-color 0.2s;
+}
+.modal-content input[type="text"]:focus, .modal-content select:focus {
+    border-color: #3498db; outline: none;
+}
+
+/* Resumen de Números en Modal */
+.resumen-numeros-container {
+    padding: 15px; margin: 15px 0; border: 1px dashed #ccc; border-radius: 5px;
+}
+.numero-resumen {
+    display: inline-block; background-color: #3498db; color: white;
+    padding: 5px 10px; margin: 5px; border-radius: 4px; cursor: pointer;
+    font-weight: bold; font-size: 0.9em; transition: background-color 0.2s;
+}
+.numero-resumen:hover { background-color: #e74c3c; }
+
+/* Botón Finalizar Compra */
+#modal-formulario .btn-primary {
+    background-color: #2ecc71; width: 100%; margin-top: 20px;
+}
+#modal-formulario .btn-primary:hover { background-color: #27ae60; }
+
+
+/* ======================================================= */
+/* === 7. BLOQUE DE RIFA EN LISTA_NUMEROS.HTML === */
+/* ======================================================= */
+.rifa-info-block {
+    display: flex; gap: 30px; padding: 30px; margin: 20px auto 40px; 
+    background-color: #ffffff; border-radius: 10px; box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+    align-items: center; 
+}
+.rifa-info-image {
+    flex-shrink: 0; width: 250px; max-height: 250px; overflow: hidden;
+    border-radius: 8px; box-shadow: 0 4px 8px rgba(0, 0, 0, 0.15);
+}
+.info-prize-img { width: 100%; height: 100%; object-fit: cover; display: block; }
+
+.rifa-info-text { flex-grow: 1; }
+.rifa-info-text h3 {
+    font-size: 1.8em; color: #2c3e50; margin-bottom: 5px; font-weight: 900;
+}
+.summary-descripcion { font-size: 1em; color: #555; margin-bottom: 15px; line-height: 1.5; }
+.summary-details { padding-top: 15px; border-top: 1px solid #eee; }
+.summary-prize, .summary-price { display: block; font-size: 1.2em; margin-bottom: 10px; }
+.summary-prize strong { color: #3498db; font-weight: 700; }
+.summary-price strong { color: #2ecc71; font-size: 1.3em; }
+
+/* Media Query: Para móviles y tablets */
+@media (max-width: 768px) {
+    .rifa-info-block {
+        flex-direction: column; gap: 20px; padding: 20px;
+    }
+    .rifa-info-image {
+        width: 100%; max-height: none;
+    }
+}
+
+
+/* ======================================================= */
+/* === 8. SECCIÓN CUENTAS DE PAGO === */
+/* ======================================================= */
+.payment-methods-section {
+    padding: 40px 0 60px; background-color: #ffffff; 
+}
+.payment-cards-container {
+    display: flex; justify-content: center; flex-wrap: wrap; gap: 30px;
+    margin-top: 30px;
+}
+.payment-card {
+    width: 350px; padding: 30px; border: 1px solid #e0e0e0; border-radius: 10px;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.05); text-align: center;
+    background-color: #f8f8f8;
+}
+.bank-logo { max-height: 50px; margin-bottom: 15px; }
+.payment-card h3 { color: #2c3e50; margin-bottom: 10px; font-size: 1.3em; }
+.payment-card p { margin-bottom: 5px; color: #666; font-size: 0.95em; }
+.account-number { font-weight: bold; color: #3498db; margin: 10px 0 20px; }
+
+.btn-copy {
+    background-color: #2ecc71; color: white; padding: 10px 20px; border: none;
+    border-radius: 5px; cursor: pointer; font-weight: 600;
+    transition: background-color 0.2s;
+}
+.btn-copy:hover { background-color: #27ae60; }
+
+
+/* ======================================================= */
+/* === 9. FOOTER === */
+/* ======================================================= */
+.main-footer {
+    background-color: #2c3e50; color: #ecf0f1; padding: 40px 0 15px;
+}
+.footer-container {
+    max-width: 1200px; margin: 0 auto; display: flex; justify-content: space-between;
+    flex-wrap: wrap; padding: 0 20px; border-bottom: 1px solid #34495e;
+    padding-bottom: 25px; margin-bottom: 15px;
+}
+.footer-col {
+    width: 30%; min-width: 250px; margin-bottom: 20px;
+}
+.footer-col h4 {
+    font-size: 1.2em; color: #3498db; margin-bottom: 15px;
+    border-bottom: 2px solid #3498db; display: inline-block; padding-bottom: 5px;
+}
+.footer-col p, .footer-col a {
+    font-size: 0.9em; color: #bdc3c7; text-decoration: none; line-height: 1.6;
+}
+.footer-col a:hover { color: #ffffff; }
+.social-links a { margin-right: 10px; font-weight: 600; }
+.footer-bottom {
+    text-align: center; font-size: 0.8em; color: #bdc3c7; margin-top: 10px;
+}
+
+/* ======================================================= */
+/* === 10. ANIMACIONES (Keyframes) === */
+/* ======================================================= */
+@keyframes animatetop {
+    from {top: -300px; opacity: 0}
+    to {top: 0; opacity: 1}
+}

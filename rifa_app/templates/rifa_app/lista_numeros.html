@@ -1,0 +1,62 @@
+{% extends "rifa_app/base.html" %}
+{% load static %}
+
+{% block title %}Listado de Números{% endblock %}
+
+{% block content %}
+
+<div class="rifa-container">
+
+    <div class="title-section">
+        <p class="subtitle">Selecciona tu suerte</p>
+        <h2 class="main-heading">NÚMEROS DISPONIBLES</h2>
+    </div>
+   {% if rifa %}
+    <div class="rifa-info-block">
+        
+        <div class="rifa-info-image">
+            <img src="{{ rifa.imagen_principal.url }}" alt="Imagen del Premio" class="info-prize-img">
+        </div>
+        
+        <div class="rifa-info-text">
+            <h3>Rifa: {{ rifa.nombre }}</h3>
+            <p class="summary-descripcion">{{ rifa.descripcion_corta }}</p>
+            
+            <div class="summary-details">
+                <p class="summary-prize">
+                    🏆 Premio Principal: <strong>{{ rifa.premio_principal }}</strong>
+                </p>
+                <p class="summary-price">
+                    Costo del Boleto: <strong>{{ rifa.precio|floatformat:2 }} $</strong>
+                </p>
+            </div>
+        </div>
+    </div>
+    {% endif %}
+
+    <div class="control-section">
+        <div class="control-left">
+            <input type="text" id="buscador-input" placeholder="Buscar número..." class="form-input">
+        </div>
+        <div class="control-right">
+            <span class="seleccionados-count">Seleccionados: <span id="cantidad-seleccionada">0</span></span>
+            <button id="boton-comprar" disabled class="btn-primary">Reservar y Pagar</button>
+        </div>
+    </div>
+    
+    <div id="grid-numeros" class="grid-numeros" data-rifa-id="{{ rifa.id|default:'' }}">
+        {% for num in page_obj %}
+            <div class="numero {{ num.estado }}" data-numero="{{ num.numero }}">
+                {{ num.numero }}
+            </div>
+        {% endfor %}
+    </div>
+
+    <div class="paginacion">
+        </div>
+
+</div>
+
+{% include "rifa_app/modal_compra.html" %}
+
+{% endblock %}

@@ -1,0 +1,68 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Juega con Doble EE</title>
+    
+    <link rel="stylesheet" href="{% static 'css/estilos.css' %}">
+    
+    <link rel="stylesheet" type="text/css" href="https://cdnjs.cloudflare.com/ajax/libs/slick-carousel/1.8.1/slick.min.css"/>
+    <link rel="stylesheet" type="text/css" href="https://cdnjs.cloudflare.com/ajax/libs/slick-carousel/1.8.1/slick-theme.min.css"/>
+</head>
+<body>
+
+    <nav class="main-navbar">
+        <div class="navbar-container">
+            <a href="{% url 'index' %}" class="logo-link">
+                <img src="{% static 'img/logo.png' %}" alt="Juega con Doble EE Logo" class="app-logo">
+            </a>
+            
+            <div class="nav-links">
+                <a href="{% url 'index' %}">INICIO</a>
+                <a href="#pagos">CUENTAS DE PAGO</a> 
+                <a href="#contacto">CONTACTO</a>
+                <a href="{% url 'lista_numeros' %}" class="btn-nav-action">EVENTOS</a> 
+            </div>
+        </div>
+    </nav>
+
+    <main id="main-content">
+        {% block content %}{% endblock %}
+    </main>
+
+
+    <footer class="main-footer" id="contacto">
+                <div class="footer-container">
+            <div class="footer-col contact-col">
+                <h4>Contacto Rápido</h4>
+                <p>WhatsApp: +58 412 XXXX XXX</p>
+                <p>Email: contacto@dobleee.com</p>
+            </div>
+            <div class="footer-col legal-col">
+                <h4>Información Legal</h4>
+                <p>&copy; 2025 Juega con Doble EE C.A.</p>
+                <p>Todos los derechos reservados.</p>
+                <a href="#">Términos y Condiciones</a>
+            </div>
+            <div class="footer-col social-col">
+                <h4>Síguenos</h4>
+                <div class="social-links">
+                    <a href="URL_INSTAGRAM" target="_blank">Instagram</a> | 
+                    <a href="URL_FACEBOOK" target="_blank">Facebook</a>
+                </div>
+            </div>
+        </div>
+        <div class="footer-bottom">
+           Producciones Lumpia C.A. 2025
+        </div>
+    </footer>
+
+    <script src="https://code.jquery.com/jquery-3.7.1.min.js"></script> 
+    
+    <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/slick-carousel/1.8.1/slick.min.js"></script>
+    
+    <script src="{% static 'js/main.js' %}"></script>
+</body>
+</html>

@@ -1,0 +1,98 @@
+{% extends "rifa_app/base_admin.html" %}  
+{% load static %}
+
+{% block extra_head %}
+    <link rel="stylesheet" href="{% static 'css/panel_admin.css' %}">
+{% endblock %}
+
+
+{% block content %}
+<div class="rifa-container">
+
+    {% if mensaje_alerta %}
+        <div class="alerta-roja">
+            <h2>🚨 Error de Gestión</h2>
+            <p>{{ mensaje_alerta }}</p>
+            <p>Por favor, marca una Rifa como 'Activa' en el Administrador de Django para continuar.</p>
+        </div>
+    {% elif rifa_activa %}
+        <div class="title-section">
+            <h2 class="main-heading">PANEL DE GESTIÓN: {{ rifa_activa.nombre|upper }}</h2>
+            <p class="subtitle">Solo se muestran números reservados y vendidos para esta rifa.</p>
+        </div>
+        
+        <form id="logout-form" action="{% url 'logout' %}" method="post" style="display: none;">
+            {% csrf_token %}
+        </form>
+
+        <div class="admin-container">
+            <h1>Panel de Administración de la Rifa</h1>
+            
+            <table class="tabla-reservas">
+                <thead>
+                    <tr>
+                        <th>Número</th>
+                        <th>Estado</th>
+                        <th>Comprador</th>
+                        <th>Cédula</th>
+                        <th>Banco</th>
+                        <th>Telefono</th>
+                        <th>Referencia</th>
+                        <th>Transferencia</th>
+                        <th>Acciones</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    {% for num in numeros %}
+                    <tr class="estado-{{ num.estado }}">
+                        <td>{{ num.numero }}</td>
+                        <td>{{ num.estado|upper }}</td>
+                        <td>{{ num.nombre }} {{ num.apellido }}</td>
+                        <td>{{ num.cedula }}</td>
+                        <td>{{ num.banco }}</td>
+                        <td>{{ num.telefono}}</td>
+                        <td>{{ num.referencia }}</td>
+                        <td>
+                            {% if num.imagen_transferencia %}
+                                <button class="btn-transferencia" onclick="openModal('{{ num.imagen_transferencia.url }}')">Ver Imagen</button>
+                            {% else %}
+                                N/A
+                            {% endif %}
+                        </td>
+                       <td class="acciones">
+                            {% if num.estado == 'reservado' %}
+                                <form id="form-{{ num.id }}" method="post" action="{% url 'confirmar_venta' num.id %}" style="display:inline;">
+                                    {% csrf_token %}
+                                    <button type="button" 
+                                            class="btn-confirmar" 
+                                            data-nombre="{{ num.nombre }}" 
+                                            data-numero-valor="{{ num.numero }}"
+                                            data-whatsapp-telefono="{{ num.telefono }}"
+                                            onclick="confirmarVentaForm(this)">
+                                        Confirmar Venta
+                                    </button>
+                                </form>
+                            {% else %}
+                                —
+                            {% endif %}
+                        </td> 
+                    </tr>
+                    {% endfor %}
+                </tbody>
+            </table>
+        </div>
+
+        <div id="imageModal" class="modal-imagen">
+            <span class="close-img">&times;</span>
+            <img class="modal-content-img" id="img01">
+        </div>
+
+    {% endif %}
+</div>
+
+{% endblock %}
+
+
+{% block extra_js %}
+    <script src="{% static 'js/panel_admin.js' %}"></script>
+{% endblock %}

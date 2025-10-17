@@ -1,0 +1,35 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Iniciar Sesión</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;500&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="{% static 'css/login.css' %}">
+</head>
+<body>
+    <div class="login-container">
+        <h2>Acceso al Panel</h2>
+
+        {% if form.errors %}
+            <div class="error-message">
+                Tu usuario o contraseña no son correctos. Por favor, inténtalo de nuevo.
+            </div>
+        {% endif %}
+
+        <form method="post">
+            {% csrf_token %}
+            <p>
+                <input type="text" name="username" placeholder="Nombre de usuario" autofocus autocapitalize="none" autocomplete="username" maxlength="150" required id="id_username">
+            </p>
+            <p>
+                <input type="password" name="password" placeholder="Contraseña" autocomplete="current-password" required id="id_password">
+            </p>
+            <button type="submit">Entrar</button>
+        </form>
+    </div>
+</body>
+</html>

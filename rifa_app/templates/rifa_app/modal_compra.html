@@ -1,0 +1,40 @@
+<div id="modal-formulario" class="modal">
+    <div class="modal-content">
+        <span class="close-button">&times;</span>
+        <h2>Confirmar Reserva de Números</h2>
+
+        <div id="resumen-numeros">
+            </div>
+        <hr>
+
+        <p>Completa tus datos para confirmar la reserva:</p>
+
+        <form action="{% url 'comprar_numeros' %}" method="post" enctype="multipart/form-data">
+            {% csrf_token %}
+            <input type="hidden" name="numeros_seleccionados" id="id_numeros_seleccionados">
+            
+            <label for="id_cedula">Cédula:</label>
+            <input type="text" name="cedula" id="id_cedula" required><br><br>
+
+            <label for="id_nombre">Nombre:</label>
+            <input type="text" name="nombre" id="id_nombre" required><br><br>
+
+            <label for="id_apellido">Apellido:</label>
+            <input type="text" name="apellido" id="id_apellido" required><br><br>
+
+            <label for="id_telefono">Teléfono (WhatsApp):</label>
+            <input type="text" name="telefono" id="id_telefono" placeholder="Ej: 584121234567" required><br><br>
+
+            <label for="id_banco">Banco:</label>
+            <input type="text" name="banco" id="id_banco" required><br><br>
+
+            <label for="id_referencia">Referencia/Comprobante:</label>
+            <input type="text" name="referencia" id="id_referencia" required><br><br>
+
+            <label for="id_imagen_transferencia">Foto de Transferencia:</label>
+            <input type="file" name="imagen_transferencia" id="id_imagen_transferencia" accept="image/*" required><br><br>
+
+            <button type="submit">Finalizar Compra</button>
+        </form>
+    </div>
+</div>

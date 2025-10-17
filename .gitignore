@@ -1,0 +1,26 @@
+# Archivos de entorno virtual (si usas uno como venv, env, etc.)
+/venv/
+/env/
+/.venv/
+
+# Archivos compilados de Python
+__pycache__/
+*.pyc
+
+# Base de datos de desarrollo de SQLite
+db.sqlite3
+db.sqlite3-journal
+
+# Archivos multimedia subidos por los usuarios (muy importante)
+# Esto evita que las imágenes de premios y transferencias se suban al repositorio.
+/media/
+
+# Carpeta donde Django recolecta los archivos estáticos para producción
+/staticfiles/
+
+# Archivos de configuración local o secretos (si los tuvieras)
+.env
+local_settings.py
+
+# Logs
+*.log

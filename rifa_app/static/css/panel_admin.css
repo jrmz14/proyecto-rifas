@@ -1,0 +1,54 @@
+/* Estilos específicos para el panel */
+body { background-color: #f4f7f6; }
+.admin-container { max-width: 1400px; margin: 20px auto; padding: 20px; background-color: #fff; border-radius: 8px; box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1); }
+.admin-header { display: flex; justify-content: space-between; align-items: center; border-bottom: 2px solid #3498db; margin-bottom: 30px; }
+h1 { color: #2c3e50; border-bottom: 2px solid #3498db; padding-bottom: 10px; margin-bottom: 30px; }
+h1 { border-bottom: none; margin-bottom: 0; } /* Quitamos el borde duplicado */
+.btn-logout { background-color: #e74c3c; color: white; padding: 10px 15px; border-radius: 5px; text-decoration: none; font-weight: bold; transition: background-color 0.3s; }
+.btn-logout:hover { background-color: #c0392b; }
+
+.tabla-reservas { width: 100%; border-collapse: collapse; margin-top: 20px; }
+.tabla-reservas th, .tabla-reservas td { padding: 12px 15px; text-align: left; border-bottom: 1px solid #ddd; }
+.tabla-reservas th { background-color: #3498db; color: white; font-weight: bold; }
+.estado-reservado { background-color: #fcf8e3; color: #8a6d3b; font-weight: bold; }
+.estado-vendido { background-color: #dff0d8; color: #3c763d; font-weight: bold; }
+.acciones button { padding: 8px 12px; margin-right: 5px; cursor: pointer; border: none; border-radius: 4px; transition: background-color 0.3s; }
+.btn-confirmar { background-color: #5cb85c; color: white; }
+.btn-confirmar:hover { background-color: #4cae4c; }
+.btn-cancelar { background-color: #f0ad4e; color: white; }
+.btn-cancelar:hover { background-color: #eea236; }
+.btn-transferencia { background-color: #007bff; color: white; }
+.btn-transferencia:hover { background-color: #0069d9; }
+.modal-imagen { display: none; position: fixed; z-index: 10; left: 0; top: 0; width: 100%; height: 100%; overflow: auto; background-color: rgba(0,0,0,0.9); }
+.modal-content-img { margin: auto; display: block; width: 80%; max-width: 700px; }
+.close-img { position: absolute; top: 15px; right: 35px; color: #f1f1f1; font-size: 40px; font-weight: bold; transition: 0.3s; cursor: pointer; }
+.close-img:hover, .close-img:focus { color: #bbb; }
+
+
+  .btn-whatsapp { 
+            background-color: #25D366; 
+            color: white; 
+            padding: 8px 12px; 
+            text-decoration: none;
+            border-radius: 4px; 
+            display: inline-block;
+            transition: background-color 0.3s;
+        }
+        .btn-whatsapp:hover { 
+            background-color: #128C7E; 
+        }
+
+
+.admin-navbar {
+    background-color: #2c3e50; /* Azul oscuro para un look de sistema */
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
+    padding: 10px 0;
+}
+.admin-navbar .navbar-container {
+    max-width: 1200px;
+    margin: 0 auto;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 0 20px;
+}
