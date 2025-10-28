@@ -272,10 +272,13 @@ document.addEventListener('DOMContentLoaded', () => {
     actualizarNumerosPorPolling();
     setInterval(actualizarNumerosPorPolling, 10000); 
 
-    // ----------------------------------------------------
-    // 7. LÓGICA DEL CARRUSEL (SLICK)
-    // ----------------------------------------------------
-    if (typeof $ !== 'undefined' && $('.finished-events-carousel').length) {
+   
+});
+
+
+$(document).ready(function() { 
+    // Aseguramos que Slick y jQuery estén definidos y que el elemento exista
+    if (typeof $.fn.slick !== 'undefined' && $('.finished-events-carousel').length) {
         $('.finished-events-carousel').slick({
             infinite: true,
             slidesToShow: 3, 
@@ -296,5 +299,4 @@ document.addEventListener('DOMContentLoaded', () => {
             ]
         });
     }
-
 });

@@ -6,48 +6,84 @@
 {% block content %}
 
 <div class="rifa-container">
-
-    <section class="hero-section">
-        <div class="hero-left">
-            <img src="{% static 'img/logo.png' %}" alt="Logo Juega con Doble EE Grande" class="hero-product-image">
-        </div>
-        <div class="hero-right">
-            <span class="location">Táchira, Venezuela</span>
-            <h1 class="hero-title">Juega con Doble EE</h1>
-            <p class="hero-subtitle">Tu oportunidad de ganar con la mejor rifa.</p>
-            
-            <a href="#events-list" class="btn-hero-action">VER EVENTOS</a>
-        </div>
-    </section>
+    <div class="banner-container">
+        <section class="hero-section">
+            <div class="hero-left">
+            </div>
+            <div class="hero-right">
+                <span class="location">Táchira, Venezuela</span>
+                <h1 class="hero-title">Juega con Doble EE</h1>
+                <p class="hero-subtitle">Tu oportunidad de ganar con la mejor rifa.</p>
+                
+                <a href="#events-list" class="btn-hero-action">VER EVENTOS</a>
+            </div>
+        </section>
+    </div>
+    
 
     <div class="title-section">
-        <p class="subtitle">¡Participa!</p>
-        <h2 class="main-heading">DISPONIBLES</h2>
+        <p class="subtitle">¡Hecha un vistazo a nuestras rifas!</p>
+        <h2 class="main-heading">🍀 Prueba tu Suerte 🍀</h2>
     </div>
 
     <section class="events-list" id="events-list">
         {% if rifa_activa %}
-        <div class="events-list">
+        <div class="event-details-row"> 
+            
             <div class="event-card">
                 <div class="card-image-container">
                     <img src="{{ rifa_activa.imagen_principal.url }}" alt="Premio de la rifa" class="card-image">
                 </div>
+                
+            </div>
+            
+            <div class="event-info-box">
                 <div class="card-content">
                     <p class="event-title">{{ rifa_activa.premio_principal }}</p>
-                    <p class="event-date">{{ rifa_activa.fecha_sorteo|date:"j F, Y" }}</p>
-                    <a href="{% url 'lista_numeros' %}" class="btn-event-action">LISTA DE BOLETOS</a>
+                    <p class="event-date">Sorteo: {{ rifa_activa.fecha_sorteo|date:"j F, Y" }}</p>
                 </div>
+                <div class="price-info">
+                    <h3 class="esmeralda-text">Costo por Boleto:</h3>
+                    <p class="gold-price">$ {{ rifa_activa.precio|floatformat:2 }}</p>
+                </div>
+                
+                <hr class="divider-gold">
+                
+            <h3 class="esmeralda-text">Detalles de la Rifa:</h3>
+                <div class="description-text">
+                    <p>{{ rifa_activa.descripcion_corta|linebreaks }}</p>
+                </div>
+
+                <a href="{% url 'lista_numeros' %}" class="btn-main-cta">¡JUGAR AHORA!</a>
+                
             </div>
+            
         </div>
         {% else %}
-        <div class="event-card">
-            <div class="card-image-container">
-                <img src="{% static 'img/premio_activo.jpg' %}" alt="Producto de la Rifa" class="card-image">
+        <div class="event-details-row"> 
+            
+            <div class="event-card">
+                <div class="card-image-container">
+                     <img src="{% static 'img/no_rifa.jpg' %}" alt="Producto de la Rifa" class="card-image">
+                </div>
+                
             </div>
-            <div class="card-content">
-                <h3 class="event-title">Lo lamentamos no hay rifas disponibles por ahora</h3>
-                <p class="event-date">19 Octubre, 2025</p>
+            
+            <div class="event-info-box">
+                <div class="card-content">
+                    <p class="event-title">Lo sentimos!</p>
+                    <p class="event-date">no hay ningun sorteo activo :(</p>
+                </div>
+                
+            <h3 class="esmeralda-text">Pero espera!!</h3>
+                <div class="description-text">
+                    <p>pronto habran mas sorteos y podras jugar con nosotros!</p>
+                </div>
+
+                
+                
             </div>
+            
         </div>
         {% endif %}
     </section>
@@ -65,14 +101,14 @@
             <div class="card-content">
                 <p class="event-title">{{ rifa_finalizada.premio_principal }}</p>
                 <p class="event-date">Sorteada: {{ rifa_finalizada.fecha_sorteo|date:"j F, Y" }}</p>
-                <a href="#" class="btn-finished-action">VER GANADOR</a>
+                <p class="btn-finished-action">N° Ganador : 33</a>
             </div>
         </div>
         {% endfor %}
     </section>
 
 
-        <section class="payment-methods-section" id="pagos">
+    <section class="payment-methods-section" id="pagos">
         
         <div class="title-section">
             <p class="subtitle">La forma más fácil de pagar</p>
@@ -83,26 +119,33 @@
             
             <div class="payment-card">
                 <img src="{% static 'img/banesco.png' %}" alt="Logo banesco" class="bank-logo">
-                <h3>Banco Banesco</h3>
-                <p>Titular: Juega con Doble EE C.A.</p>
-                <p>Rif: J-XXXXXXX-X</p>
-                <p class="account-number">Cuenta Corriente: 0105-XXXX-XXXX-XXXX-XXXX</p>
-                <button class="btn-copy" data-copy="0105-XXXX-XXXX-XXXX-XXXX">Copiar Cuenta</button>
+                <h3>Nequi</h3>
+                <p>Titular: Eduardo Perez</p>
+                <p>3505727056</p>
+                <button class="btn-copy" data-copy="3505727056">Copiar telefono</button>
             </div>
 
             <div class="payment-card">
                 <img src="{% static 'img/pago_movil.png' %}" alt="Logo Pago Móvil" class="bank-logo">
-                <h3>Pago Móvil BDV</h3>
-                <p>C.I.: V-XX.XXX.XXX</p>
-                <p>Teléfono: 0412-XXXXXXX</p>
-                <p class="account-number">Banco: 0102 (BDV)</p>
-                <button class="btn-copy" data-copy="0412-XXXXXXX">Copiar Teléfono</button>
+                <h3>Binance</h3>
+                <p>I.D. : 1019727563</p>
+                <p>Eduardprz.ef@gmail.com</p>
+                <button class="btn-copy" data-copy="1019727563">Copiar ID</button>
+            </div>
+
+            <div class="payment-card">
+                <img src="{% static 'img/pago_movil.png' %}" alt="Logo Pago Móvil" class="bank-logo">
+                <h3>Pago Movil</h3>
+                <p>0412-0287190</p>
+                <p>Banco Activo</p>
+                <p>C.I. 28559694</p>
+                <button class="btn-copy" data-copy="04120287190">Copiar Telefono</button>
             </div>
             
-            </div>
+        </div>
         
     </section>
-    
-    </div>
+      
+</div>
 {% endblock %}
     

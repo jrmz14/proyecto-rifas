@@ -23,18 +23,20 @@
                 <a href="{% url 'index' %}">INICIO</a>
                 <a href="#pagos">CUENTAS DE PAGO</a> 
                 <a href="#contacto">CONTACTO</a>
-                <a href="{% url 'lista_numeros' %}" class="btn-nav-action">EVENTOS</a> 
+                <a href="#events-list" class="btn-nav-action">EVENTOS</a> 
             </div>
         </div>
     </nav>
 
     <main id="main-content">
-        {% block content %}{% endblock %}
+        {% block content %}
+        
+        {% endblock %}
     </main>
 
 
     <footer class="main-footer" id="contacto">
-                <div class="footer-container">
+        <div class="footer-container">
             <div class="footer-col contact-col">
                 <h4>Contacto Rápido</h4>
                 <p>WhatsApp: +58 412 XXXX XXX</p>
