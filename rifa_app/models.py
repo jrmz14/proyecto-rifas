@@ -24,6 +24,12 @@ class Rifa(models.Model):
     # Fechas
     fecha_inicio = models.DateField(verbose_name="Fecha de Inicio")
     fecha_sorteo = models.DateTimeField(verbose_name="Fecha y Hora del Sorteo")
+    numero_ganador = models.CharField(
+        max_length=10, 
+        null=True, 
+        blank=True, 
+        verbose_name="Número Ganador del Sorteo"
+    )
 
     # Estado
     activa = models.BooleanField(default=True, verbose_name="Rifa Activa")

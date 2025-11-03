@@ -37,29 +37,59 @@ def index(request):
     }
     return render(request, 'rifa_app/index.html', context)
 
-
-def lista_numeros(request):
-    rifa_activa = get_rifa_activa()
+def lista_numeros(request, rifa_id):
+    rifa = get_object_or_404(Rifa, id=rifa_id)
     
+    # --- 1. Definición de Rangos (Asume números de 0 a 999) ---
+    rangos = []
+    # Genera rangos de 100 en 100
+    for i in range(0, 1000, 100):
+        inicio = str(i).zfill(3)       # 000, 100, 200, etc.
+        fin = str(i + 99).zfill(3)     # 099, 199, 299, etc.
+        rangos.append((inicio, fin))
+
+    # --- 2. Obtener el Rango Solicitado ---
+    rango_param = request.GET.get('rango')
+    rango_actual = None
+    
+    if rango_param and '-' in rango_param:
+        try:
+            inicio_rango, fin_rango = rango_param.split('-')
+            inicio_rango = int(inicio_rango)
+            fin_rango = int(fin_rango)
+            rango_actual = rango_param # Para resaltar el botón activo en el HTML
+        except ValueError:
+            # Si el rango es inválido, volvemos al inicio
+            inicio_rango = 0
+            fin_rango = 99
+            rango_actual = '000-099'
+    else:
+        # Rango por defecto (el primero)
+        inicio_rango = 0
+        fin_rango = 99
+        rango_actual = '000-099'
+
    
-    if rifa_activa is None:
-        context = {'rifa': None, 'page_obj': None}
-        return render(request, 'rifa_app/lista_numeros.html', context)
     
-    # Consulta optimizada: solo los números de la rifa activa
-    todos_los_numeros = Numero.objects.filter(rifa=rifa_activa).order_by('numero')
-    
-    
-    
-    paginator = Paginator(todos_los_numeros, 200)
+    # Filtrar por un campo de texto requiere que los valores de inicio y fin sean strings con padding
+    start_str = str(inicio_rango).zfill(3)
+    end_str = str(fin_rango).zfill(3)
 
-    page_number = request.GET.get('page')
-    page_obj = paginator.get_page(page_number)
+    numeros_del_rango = rifa.numero_set.filter(
+        numero__gte=start_str,
+        numero__lte=end_str
+    ).order_by('numero')
+
+    
+    # Ya no usamos Paginator, el resultado es la lista filtrada.
     
     context = {
-        'rifa': rifa_activa,
-        'page_obj': page_obj,
+        'rifa': rifa,
+        'page_obj': numeros_del_rango,         # Cambiamos 'page_obj' por la lista filtrada
+        'rangos_disponibles': rangos,          # Para el menú de navegación
+        'rango_actual': rango_actual,          # Para el botón activo
     }
+    
     return render(request, 'rifa_app/lista_numeros.html', context)
 
 

@@ -101,7 +101,7 @@
             <div class="card-content">
                 <p class="event-title">{{ rifa_finalizada.premio_principal }}</p>
                 <p class="event-date">Sorteada: {{ rifa_finalizada.fecha_sorteo|date:"j F, Y" }}</p>
-                <p class="btn-finished-action">N° Ganador : 33</a>
+                <p class="btn-finished-action">N° Ganador : {{ rifa_finalizada.numero_ganador }}</p>
             </div>
         </div>
         {% endfor %}

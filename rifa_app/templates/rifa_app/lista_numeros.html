@@ -52,9 +52,16 @@
         {% endfor %}
     </div>
 
-    <div class="paginacion">
+    <div class="paginacion-rango">
+        <div class="rango-nav">
+            {% for rango_inicio, rango_fin in rangos_disponibles %}
+                <a href="?rango={{ rango_inicio }}-{{ rango_fin }}" 
+                class="btn-rango {% if rango_actual == rango_inicio|stringformat:'s'|add:'-'|add:rango_fin|stringformat:'s' %}active{% endif %}">
+                    {{ rango_inicio }} - {{ rango_fin }}
+                </a>
+            {% endfor %}
         </div>
-
+    </div>
 </div>
 
 {% include "rifa_app/modal_compra.html" %}
